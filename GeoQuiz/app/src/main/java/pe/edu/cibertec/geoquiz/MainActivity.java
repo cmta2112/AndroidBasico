@@ -66,8 +66,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 actualPosition -= 1;
 
-                if (actualPosition == 0){
-                    actualPosition = questions.size()-1;
+                if (actualPosition == -1){
+                    actualPosition = questions.size() -1 ;
                 }
                 tvQuestion.setText(questions.get(actualPosition).getName());
 
