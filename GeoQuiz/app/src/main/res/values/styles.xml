@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="bt_previous">Anterior</style>
+
+    <style name="bt_next">Siguiente</style>
+
 </resources>
