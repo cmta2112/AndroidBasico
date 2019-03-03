@@ -48,6 +48,10 @@ public class ProductActivity extends AppCompatActivity {
         intent.putExtra("product_description",description);
         intent.putExtra("product_quantity",quantity);
 
+        //Tarea: en lugar de pasar 3 parametros pasar toda la clase
+        //Tip: Google pass clase intent
+        //GSON
+
         setResult(RESULT_OK,intent);
 
 
