@@ -1,4 +1,4 @@
-package pe.edu.cibertec.inventory;
+package pe.edu.cibertec.agenda;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -14,58 +14,58 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Vista --> se crea una variable de la vista tipo recyclerView
+// Vista --> se crea una variable de la vista tipo recyclerView
 
-    RecyclerView rvProduct;
+    RecyclerView rvContact;
 
     // Modelo: informacion a mostrar
 
-    ArrayList<Product> items;
+    ArrayList<Contacto> items;
 
     //Adaptador
 
-    AdapterProduct adapterProduct;
+    AdapterContact adapterContact;
 
     final static int REQUEST_CODE_MAIN = 1;
 
-       @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         //Enlazar variable con su vista a partir del id
 
-        rvProduct = findViewById(R.id.rvProduct);
+        rvContact = findViewById(R.id.rvContact);
 
         //Asignar espacio en memoeria para el arreglo
 
-           items = new ArrayList<>();
+        items = new ArrayList<>();
 
         //Cargar la info para mostrar
 
-           loadItems();
+        loadItems();
 
-           //Inicializo el adaptador
-           adapterProduct = new AdapterProduct(items);
+        //Inicializo el adaptador
+        adapterContact= new AdapterContact(items);
 
-           //asociar el adapter con el recicle view
-           rvProduct.setAdapter(adapterProduct);
+        //asociar el adapter con el recicle view
+        rvContact.setAdapter(adapterContact);
 
-           // tambien definir si va a ser horizontal o vertical
-           rvProduct.setLayoutManager(new LinearLayoutManager(this));
+        // tambien definir si va a ser horizontal o vertical
+        rvContact.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
     private void loadItems() {
-           //Intancia un objeto de la clase Product
-           Product productLaptop = new Product("Laptop","Marca Toshiba",2);
+        //Intancia un objeto de la clase Product
+        Contacto ContactoRepuesto = new Contacto("Alejandro","Hiraoka",989896537);
 
-           //Agrega el objeto creado a la lista
-           items.add(productLaptop);
+        //Agrega el objeto creado a la lista
+        items.add(ContactoRepuesto);
 
 
-           Product productMouse = new Product("Mouse", "Modelo Genious", 122);
-           items.add(productMouse);
+        Contacto ContactoMantenimiento= new Contacto("Cesar", "Grupo Eulen", 3960455);
+        items.add(ContactoMantenimiento);
 
 
 
@@ -83,26 +83,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE_MAIN && resultCode == RESULT_OK){
-            String name = data.getStringExtra("product_name");
-            String description = data.getStringExtra("product_description");
-            int quantity = data.getIntExtra("product_quantity",0);
+            String name = data.getStringExtra("contact_name");
+            String company = data.getStringExtra("contact_company");
+            int number = data.getIntExtra("contact_number",0);
 
-            Product product = new Product(name,description,quantity);
+            Contacto contacto= new Contacto(name,company,number);
 
-            items.add(product);
+            items.add(contacto);
 
-            adapterProduct.notifyDataSetChanged();
+            adapterContact.notifyDataSetChanged();
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        Intent intent = new Intent(this,ProductActivity.class);
+        Intent intent = new Intent(this,ContactActivity.class);
         startActivityForResult(intent,REQUEST_CODE_MAIN);
         return true;
 
-
     }
-
 }

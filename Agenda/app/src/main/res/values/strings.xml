@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Agenda</string>
+    <string name="et_name">Nombre</string>
+    <string name="et_company">Empresa</string>
+    <string name="et_number">Telefono</string>
+    <string name="item_save">item_save</string>
+</resources>
