@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     final static int REQUEST_CODE_MAIN = 1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,9 +98,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         Intent intent = new Intent(this,ContactActivity.class);
-        startActivityForResult(intent,REQUEST_CODE_MAIN);
+            startActivityForResult(intent,REQUEST_CODE_MAIN);
         return true;
 
     }

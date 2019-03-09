@@ -3,5 +3,6 @@
     <string name="et_name">Nombre</string>
     <string name="et_company">Empresa</string>
     <string name="et_number">Telefono</string>
-    <string name="item_save">item_save</string>
-</resources>
+    <string name="item_add">Agregar</string>
+    <string name="item_save">Guardar</string>
+   </resources>
