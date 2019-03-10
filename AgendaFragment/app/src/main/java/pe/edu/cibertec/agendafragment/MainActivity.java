@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
             getSupportFragmentManager().beginTransaction().add(R.id.frDetailContact,frDetails).commit();
 
+            //fragment MANAGER jala al Fragment transsaction --> agregar o remover o remplazar --> se hace commit
+
         }
 
 
