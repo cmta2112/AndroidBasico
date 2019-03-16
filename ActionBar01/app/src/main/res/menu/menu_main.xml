@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="pe.edu.cibertec.actionbar01.MainActivity">
+
+    <item
+        android:id="@+id/ins"
+        android:orderInCategory="1"
+        android:title="Nuevo" />
+    <item
+        android:id="@+id/search"
+        android:orderInCategory="2"
+        android:title="Buscar" />
+    <item
+        android:id="@+id/upd"
+        android:orderInCategory="3"
+        android:title="Editar" />
+    <item
+        android:id="@+id/del"
+        android:orderInCategory="4"
+        android:title="Retirar" />
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings" />
+
+
+</menu>
