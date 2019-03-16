@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,10 +43,38 @@ public class MainActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        TextView textView= findViewById(R.id.tvName);
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.ins) {
+            Toast.makeText(this, "Nuevo Registro", Toast.LENGTH_LONG).show();
+            textView.setVisibility(View.VISIBLE);
+
+        }
+        if (id == R.id.upd) {
+            Toast.makeText(this, "Actualizar Registro", Toast.LENGTH_LONG).show();
+            textView.setVisibility(View.VISIBLE);
+        }
+        if (id == R.id.del) {
+            //Toast.makeText(this, "Retirar Registro", Toast.LENGTH_LONG).show();
+            textView.setVisibility(View.INVISIBLE);
+        } // ---
+
+        switch (id){
+            case R.id.red:
+                //textView.setTextColor(Color.RED)
+                textView.setTextColor(getResources().getColor(R.color.colorRojo));
+                break;
+
+            case R.id.green:
+                textView.setTextColor(getResources().getColor(R.color.colorVerde));
+
+                break;
+
+            case R.id.blue:
+                textView.setTextColor(getResources().getColor(R.color.colorAzul));
+
+                break;
         }
 
         return super.onOptionsItemSelected(item);

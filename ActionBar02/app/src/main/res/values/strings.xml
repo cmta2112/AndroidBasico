@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ActionBar02</string>
     <string name="action_settings">Settings</string>
+    <string name="action_red">Rojo</string>
+    <string name="action_green">Verde</string>
+    <string name="action_blue">Azul</string>
 </resources>

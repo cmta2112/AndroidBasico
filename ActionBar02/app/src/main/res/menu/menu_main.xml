@@ -2,9 +2,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pe.edu.cibertec.actionbar02.MainActivity">
+
+        <item
+        android:id="@+id/ins"
+        android:icon="@drawable/ins"
+        android:title="Nuevo"
+        app:showAsAction="always" />
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/upd"
+        android:icon="@drawable/upd"
+        android:title="Actualizar"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/del"
+        android:icon="@drawable/del"
+        android:title="Retirar"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/red"
+        android:orderInCategory="1"
+        android:title="@string/action_red" />
+
+    <item
+        android:id="@+id/green"
+        android:orderInCategory="2"
+        android:title="@string/action_green" />
+
+    <item
+        android:id="@+id/blue"
+        android:orderInCategory="3"
+        android:title="@string/action_blue" />
 </menu>
