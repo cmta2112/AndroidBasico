@@ -2,9 +2,9 @@ package pe.edu.cibertec.listdecard.dto;
 
 public class Amigos {
 
-    private Integer foto;
-    private String nombre;
-    private String correo;
+        private Integer foto;
+        private String nombre;
+        private String correo;
 
 //Contructores
 
