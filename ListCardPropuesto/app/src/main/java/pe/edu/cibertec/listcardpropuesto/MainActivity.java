@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private List<Frutas> getData() {
-        List<Frutas> list_amigos = new ArrayList<>();
-        list_amigos.add(new Frutas(R.drawable.freesa, "Fresa", "Las fresas y los fresones crecen en el fresal"));
+        List<Frutas> list_frutas = new ArrayList<>();
+        list_frutas.add(new Frutas(R.drawable.freesa, "Fresa", "Las fresas y los fresones crecen en el fresal"));
+        list_frutas.add()
         list_amigos.add(new Frutas(R.drawable.manzana, "Manzana", "La manzana es una fruta pomacea"));
         list_amigos.add(new Frutas(R.drawable.naranja, "Naranja", "La naranja es el fruto del naranjo dulce arbol"));
         list_amigos.add(new Frutas(R.drawable.platano, "Platano", "Los platanos son amarillos"));

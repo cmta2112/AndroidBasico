@@ -9,8 +9,6 @@ public class Frutas {
     //contructores
 
 
-    public Frutas() {
-    }
 
     public Frutas(Integer foto, String nombre, String descripcion) {
         this.foto = foto;
