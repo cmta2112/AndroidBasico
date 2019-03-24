@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     final static int REQUEST_CODE_MAIN = 1;
 
-       @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -39,34 +39,33 @@ public class MainActivity extends AppCompatActivity {
 
         //Asignar espacio en memoeria para el arreglo
 
-           items = new ArrayList<>();
+        items = new ArrayList<>();
 
         //Cargar la info para mostrar
 
-           loadItems();
+        loadItems();
 
-           //Inicializo el adaptador
-           adapterProduct = new AdapterProduct(items);
+        //Inicializo el adaptador
+        adapterProduct = new AdapterProduct(items);
 
-           //asociar el adapter con el recicle view
-           rvProduct.setAdapter(adapterProduct);
+        //asociar el adapter con el recicle view
+        rvProduct.setAdapter(adapterProduct);
 
-           // tambien definir si va a ser horizontal o vertical
-           rvProduct.setLayoutManager(new LinearLayoutManager(this));
+        // tambien definir si va a ser horizontal o vertical
+        rvProduct.setLayoutManager(new LinearLayoutManager(this));
 
     }
 
     private void loadItems() {
-           //Intancia un objeto de la clase Product
-           Product productLaptop = new Product("Laptop","Marca Toshiba",2);
+        //Intancia un objeto de la clase Product
+        Product productLaptop = new Product("Laptop", "Marca Toshiba", 2);
 
-           //Agrega el objeto creado a la lista
-           items.add(productLaptop);
+        //Agrega el objeto creado a la lista
+        items.add(productLaptop);
 
 
-           Product productMouse = new Product("Mouse", "Modelo Genious", 122);
-           items.add(productMouse);
-
+        Product productMouse = new Product("Mouse", "Modelo Genious", 122);
+        items.add(productMouse);
 
 
     }
@@ -75,19 +74,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
 
-        inflater.inflate(R.menu.main_menu,menu);
-        return  true;
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (requestCode == REQUEST_CODE_MAIN && resultCode == RESULT_OK){
+        if (requestCode == REQUEST_CODE_MAIN && resultCode == RESULT_OK) {
             String name = data.getStringExtra("product_name");
             String description = data.getStringExtra("product_description");
-            int quantity = data.getIntExtra("product_quantity",0);
+            int quantity = data.getIntExtra("product_quantity", 0);
 
-            Product product = new Product(name,description,quantity);
+            Product product = new Product(name, description, quantity);
 
             items.add(product);
 
@@ -98,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        Intent intent = new Intent(this,ProductActivity.class);
-        startActivityForResult(intent,REQUEST_CODE_MAIN);
+        Intent intent = new Intent(this, ProductActivity.class);
+        startActivityForResult(intent, REQUEST_CODE_MAIN);
         return true;
 
 
