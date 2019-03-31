@@ -1,17 +1,24 @@
 package pe.edu.cibertec.agendaroom;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Switch;
 
+import com.google.gson.Gson;
+
+import java.util.List;
+
 public class ContactActivity extends AppCompatActivity {
 
     TextInputEditText etName, etTelephone;
-    int id;
+    Contact contact;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,61 +26,81 @@ public class ContactActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact);
 
         etName = findViewById(R.id.etName);
-        etTelephone =findViewById(R.id.etTelephone);
+        etTelephone = findViewById(R.id.etTelephone);
 
-        id = getIntent().getIntExtra("id",-1);
 
-        if (id > -1){
-            String name= getIntent().getStringExtra("name");
-            String telephone = getIntent().getStringExtra("telephone");
-            etName.setText(name);
-            etTelephone.setText(telephone);
+        Gson gson = new Gson();
+        String strObj = getIntent().getStringExtra("contact");
+        contact = gson.fromJson(strObj, Contact.class);
+
+
+        if (contact != null) {
+            etName.setText(contact.getName());
+            etTelephone.setText(contact.getTelephone());
         }
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_contact,menu);
+        getMenuInflater().inflate(R.menu.menu_contact, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Contact contact;
-        contact = new Contact();
-
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.optionSave:
                 String name = etName.getText().toString();
                 String telephone = etTelephone.getText().toString();
-
-                if(id == -1){
-                    contact = new Contact(name,telephone);
-
-                    //esto te permite cargarlo a la base de datos
-                    AppDatabase.getInstance(this).contactDao().insert(contact);
-
-                }else{
-                    contact.setId(id);
+                if (contact != null) {
                     contact.setName(name);
                     contact.setTelephone(telephone);
-                    AppDatabase.getInstance(this).contactDao().update(contact);
+                    new UpdateContactTask().execute(contact);
+
+                } else {
+                    contact = new Contact(name, telephone);
+                    new InsertContactTask().execute(contact);
                 }
-
-
-                
                 break;
+
             case R.id.optionDelete:
-                contact.setId(id);
-                AppDatabase.getInstance(this).contactDao().delete(contact);
+                new DeleteContactTask().execute(contact);
                 break;
         }
-
         finish();
         return true;
-
     }
+
+    private class UpdateContactTask extends AsyncTask<Contact, Void, Void> {
+        @Override
+        protected Void doInBackground(Contact... contacts) {
+            AppDatabase.getInstance(ContactActivity.this).contactDao().update(contacts);
+
+            return null;
+
+        }
+    }
+
+    private class InsertContactTask extends AsyncTask<Contact, Void, Void> {
+        @Override
+        protected Void doInBackground(Contact... contacts) {
+            AppDatabase.getInstance(ContactActivity.this).contactDao().insert(contacts);
+
+            return null;
+
+        }
+    }
+
+    private class DeleteContactTask extends AsyncTask<Contact, Void, Void> {
+        @Override
+        protected Void doInBackground(Contact... contacts) {
+            AppDatabase.getInstance(ContactActivity.this).contactDao().delete(contacts);
+
+            return null;
+
+        }
+    }
+
+
 }
 

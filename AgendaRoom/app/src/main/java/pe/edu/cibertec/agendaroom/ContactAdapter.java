@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 
@@ -46,7 +48,7 @@ class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactPrototyp
                 Contact contact = items.get(position);
 
                 //Oteniendo el id del contacto
-                int id = contact.getId();
+               /* int id = contact.getId();
                 String name = contact.getName();
                 String telephone = contact.getTelephone();
 
@@ -56,9 +58,13 @@ class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactPrototyp
                 //Enviando el id del contacto
                 intent.putExtra("id", id);
                 intent.putExtra("name",name);
-                intent.putExtra("telephone",telephone);
+                intent.putExtra("telephone",telephone);*/
 
+                Gson gson = new Gson();
+                Intent intent = new Intent(v.getContext(), ContactActivity.class);
+                intent.putExtra("contact", gson.toJson(contact));
                 v.getContext().startActivity(intent);
+
             }
         });
 

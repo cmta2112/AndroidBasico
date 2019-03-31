@@ -19,7 +19,9 @@ public abstract class AppDatabase extends RoomDatabase {
             //si tiene valor nulo se crea la instancia , singleton - sincrono
             // es para abrir una conexion a la base de datos
 
-            instance = Room.databaseBuilder(context, AppDatabase.class,"db").allowMainThreadQueries().build();
+            instance = Room.databaseBuilder(context, AppDatabase.class,"db")
+                    //.allowMainThreadQueries()--> se pone esto para que use el hilo principal
+            .build();
         }
         return instance;
     }
