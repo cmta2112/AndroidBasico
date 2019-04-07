@@ -73,6 +73,7 @@ public class ContactProvider extends ContentProvider {
         ContactDao contactDao = AppDatabase.getInstance(getContext()).contactDao();
         Long id = contactDao.insertCP(contact);
 
+        //id del nuevo contacto
         return ContentUris.withAppendedId(uri,id);
     }
 
